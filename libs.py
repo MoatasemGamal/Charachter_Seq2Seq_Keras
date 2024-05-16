@@ -198,14 +198,14 @@ class DataCleaner:
         return text
 
     @staticmethod
-    def clean(data, substitutions_regex=[], lang='multi', remove_html_tags=True, remove_stop_words=True, expand_contractions=True, lower=True,replace_hindi_numbers_with_arabic=True , strip_tashkeel=True, strip_tatweel=True, uniform_arabic_characters=False):
+    def clean(data, substitutions_regex=[], lang='multi', remove_html_tags=True, remove_stop_words=True, expand_contractions=True, lower=True,replace_hindi_numbers_with_arabic=True , strip_tashkeel=True, strip_tatweel=True, uniform_arabic_characters=False, stemming=False):
         if isinstance(data, str):
-            cleaned_data=DataCleaner.__clean_text(data, substitutions_regex, lang, remove_html_tags, remove_stop_words, expand_contractions, lower,replace_hindi_numbers_with_arabic, strip_tashkeel, strip_tatweel, uniform_arabic_characters)
+            cleaned_data=DataCleaner.__clean_text(data, substitutions_regex, lang, remove_html_tags, remove_stop_words, expand_contractions, lower,replace_hindi_numbers_with_arabic, strip_tashkeel, strip_tatweel, uniform_arabic_characters, stemming)
         else:
             data = np.array(data)
             cleaned_data = []
             for sample in data:
-                cleaned_data.append(DataCleaner.__clean_text(sample, substitutions_regex, lang, remove_html_tags, remove_stop_words, expand_contractions, lower,replace_hindi_numbers_with_arabic, strip_tashkeel, strip_tatweel, uniform_arabic_characters))
+                cleaned_data.append(DataCleaner.__clean_text(sample, substitutions_regex, lang, remove_html_tags, remove_stop_words, expand_contractions, lower,replace_hindi_numbers_with_arabic, strip_tashkeel, strip_tatweel, uniform_arabic_characters, stemming))
         
         return cleaned_data
     
