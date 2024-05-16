@@ -193,7 +193,7 @@ class DataCleaner:
                     text = re.sub(sub,' ', text)
         if stemming:
             st = ISRIStemmer()
-            text = ' '.join([st.stem(w.decode('utf-8')) for w in text.split()])
+            text = ' '.join([st.stem(w) for w in text.split()])
 
         return text
 
